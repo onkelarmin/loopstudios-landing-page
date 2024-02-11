@@ -1,0 +1,26 @@
+// global color tokens
+$-clr-white: hsl(0 0% 100%);
+$-clr-gray-400: hsl(0 0% 55%);
+$-clr-gray-700: hsl(0 0% 41%);
+$-clr-black: hsl(0 0% 0%);
+
+
+$light: (
+  "neutral": (
+    "000": $-clr-white,
+    "400": $-clr-gray-400,
+    "700": $-clr-gray-700,
+    "1000": $-clr-black,
+  ),
+
+);
+
+
+
+// contextual color tokens
+$color-neutral-000: var(--neutral-000);
+$color-neutral-400: var(--neutral-400);
+$color-neutral-700: var(--neutral-700);
+$color-neutral-1000: var(--neutral-1000);
+
+

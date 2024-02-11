@@ -1,0 +1,118 @@
+---
+// Component imports
+import PrimaryNavigation from "./PrimaryNavigation.astro"
+
+// Library imports
+import { Icon } from "astro-icon/components"
+import { getImage } from "astro:assets"
+
+// Image imports
+import backgroundImageDesktop from "../images/desktop/image-hero.jpg"
+import backgroundImageMobile from "../images/mobile/image-hero.jpg"
+
+const backgroundDesktop = await getImage({
+  src: backgroundImageDesktop,
+  format: "webp",
+})
+const backgroundMobile = await getImage({
+  src: backgroundImageMobile,
+  format: "webp",
+})
+---
+
+<header class="site-header">
+  <div class="bg-image">
+    <picture>
+      <source media="(min-width: 30em)" srcset=`${backgroundDesktop.src}` />
+      <source srcset=`${backgroundMobile.src}` />
+      <img src="../images/desktop/image-hero.jpg" alt="" />
+    </picture>
+  </div>
+  <div class="container">
+    <div class="site-header__inner">
+      <Icon name="logo" />
+      <PrimaryNavigation />
+    </div>
+    <h1 class="heading-1">Immersive Experiences that deliver</h1>
+  </div>
+</header>
+
+<style lang="scss">
+  @use "../sass/abstracts" as *;
+
+  .site-header {
+    display: grid;
+    grid-template-areas: "stack";
+    align-items: start;
+    height: 100svh;
+    overflow: hidden;
+
+    > * {
+      grid-area: stack;
+    }
+
+    @include mq(small) {
+      height: auto;
+    }
+
+    @include mq(medium) {
+      height: min(100svh, 40.625rem);
+    }
+
+    .bg-image {
+      position: relative;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      img {
+        object-fit: cover;
+        object-position: top;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block-start: 2.5rem;
+
+      @include mq(medium) {
+        padding-block-start: 4rem;
+      }
+
+      [data-icon] {
+        width: 9rem;
+        position: relative;
+        z-index: 1;
+
+        @include mq(medium) {
+          width: 12rem;
+        }
+      }
+    }
+
+    h1 {
+      max-width: 15ch;
+      border: 2px solid $color-neutral-000;
+      padding: 1.5rem;
+      margin-block: 10rem;
+      text-wrap: balance;
+
+      @include mq(medium) {
+        padding: 2.5rem;
+        margin-block: 8.125rem;
+      }
+    }
+  }
+</style>
