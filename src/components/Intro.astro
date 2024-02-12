@@ -1,0 +1,65 @@
+---
+// Library imports
+import { Image } from "astro:assets"
+
+// Image imports
+import introImage from "../images/desktop/image-interactive.jpg"
+---
+
+<section class="section" aria-labelledby="intro-title">
+  <div class="inner | container">
+    <div class="image">
+      <Image src={introImage} alt="Man wearing VR goggles" />
+    </div>
+    <div class="content | flow">
+      <h2 class="heading-2" id="intro-title">The leader in interactive VR</h2>
+      <p>
+        Founded in 2011, Loopstudios has been producing world-class virtual
+        reality projects for some of the best companies around the globe. Our
+        award-winning creations have transformed businesses through digital
+        experiences that bind to their brand.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../sass/abstracts" as *;
+
+  section {
+    .inner {
+      position: relative;
+    }
+
+    .content {
+      max-width: 33.75rem;
+      text-align: center;
+      background-color: $color-neutral-000;
+      margin-block-start: 3rem;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+
+      @include mq(medium) {
+        text-align: start;
+        margin-inline: 0;
+      }
+
+      @include mq(large) {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        padding: 6rem 0 0 6rem;
+      }
+    }
+
+    .image {
+      display: grid;
+      justify-items: center;
+
+      @include mq(large) {
+        justify-items: start;
+      }
+    }
+  }
+</style>

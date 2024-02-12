@@ -61,11 +61,29 @@ $flex-group-gap: $size-4;
 $section-padding-block-small-screens: $size-10;
 $section-padding-block-large-screens: $size-9;
 
+$flow-space-small-screens: 1em;
+$flow-space-large-screens: 1.5em;
+
 $container-min-margin-inline-small-screens: $size-6;
 $container-min-margin-inline-large-screens: $size-9;
 $container-max-width: 69.375rem;
 $container-max-width-narrow: 47rem;
 $container-max-width-wide: 75rem;
+
+// buttons
+$button-font-family: $body-font-family;
+$button-font-size: $font-size-300;
+$button-font-weight: $font-weight-default;
+$button-text-transform: uppercase;
+$button-letter-spacing: 5px;
+$button-padding: 1em 2.8em;
+$button-border: 1px solid $color-neutral-1000;
+$button-border-radius: none;
+
+$button-primary-color: $color-neutral-1000;
+$button-primary-background: $color-neutral-000;
+$button-primary-color-hover: $color-neutral-000;
+$button-primary-background-hover: $color-neutral-1000;
 
 
 // animations

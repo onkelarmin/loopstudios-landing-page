@@ -10,4 +10,11 @@ body {
 
 }
 
+.section{
+  margin-top: 6rem;
+
+  @include mq(medium){
+    margin-top: 10rem;
+  }
+}
 
