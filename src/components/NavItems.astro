@@ -30,16 +30,17 @@
       content: "";
       position: absolute;
       bottom: 0;
-      left: 50%;
+      left: 0;
       height: 0.125rem;
-      width: 0rem;
-      translate: -50% 0.5rem;
+      width: 100%;
+      transform: translateY(0.5rem) scaleX(0);
+
       background-color: currentColor;
-      transition: width 0.2s ease-out;
+      transition: transform 0.2s ease-in;
     }
 
     &:hover::after {
-      width: 1.5rem;
+      transform: translateY(0.5rem) scaleX(0.5);
     }
   }
 </style>

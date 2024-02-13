@@ -17,6 +17,8 @@ const { href, classes, ...rest } = Astro.props
   .btn {
     display: inline-flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
     cursor: pointer;
     text-decoration: none;
     line-height: 1;
@@ -28,15 +30,32 @@ const { href, classes, ...rest } = Astro.props
     padding: $button-padding;
     border: $button-border;
     border-radius: $button-border-radius;
-    transition: 275ms ease;
+    transition: 275ms ease-in;
 
     &[data-type="primary"] {
       background-color: $button-primary-background;
       color: $button-primary-color;
 
-      &:is(:hover, :focus-visible) {
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: right;
         background-color: $button-primary-background-hover;
+        transition: transform 275ms ease-in;
+      }
+
+      &:is(:hover, :focus-visible) {
         color: $button-primary-color-hover;
+        &::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
       }
     }
   }
