@@ -1,11 +1,56 @@
 ---
+// Component imports
+import CreationsGrid from "./CreationsGrid.astro"
 import Link from "./Link.astro"
 ---
 
 <section class="section" aria-labelledby="creations-title">
   <div class="inner | container">
-    <h2 class="heading-2" id="creations-title">Our creations</h2>
-    <div class="image-grid"></div>
-    <Link href="#" data-type="primary">see all</Link>
+    <h2 class="inner__title heading-2" id="creations-title">Our creations</h2>
+    <div class="inner__creations-grid">
+      <CreationsGrid />
+    </div>
+    <span class="inner__link">
+      <Link href="#" data-type="primary">see all</Link>
+    </span>
   </div>
 </section>
+
+<style lang="scss">
+  @use "../sass/abstracts" as *;
+
+  section {
+    .inner {
+      display: grid;
+      justify-items: center;
+      gap: 2.125rem;
+
+      &__title {
+        margin-block-end: 0.875rem;
+      }
+
+      @include mq(medium) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "title link"
+          "creations creations";
+        gap: 5rem;
+
+        &__title {
+          grid-area: title;
+          justify-self: start;
+          margin-block-end: 0;
+        }
+
+        &__creations-grid {
+          grid-area: creations;
+        }
+
+        &__link {
+          grid-area: link;
+          justify-self: end;
+        }
+      }
+    }
+  }
+</style>

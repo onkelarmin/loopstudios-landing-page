@@ -1,0 +1,70 @@
+---
+const { mobileImage, desktopImage, altText } = Astro.props
+---
+
+<a href="#" class="link">
+  <picture>
+    <source media="(min-width: 45em)" srcset={desktopImage.src} />
+    <source srcset={mobileImage.src} />
+    <img src={mobileImage.src} alt={altText} />
+  </picture>
+  <span class="text | heading-3"><slot /></span>
+</a>
+
+<style lang="scss">
+  @use "../sass/abstracts" as *;
+
+  .link {
+    display: grid;
+    grid-template-areas: "stack";
+    position: relative;
+    text-decoration: none;
+
+    > * {
+      grid-area: stack;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $color-neutral-000;
+      opacity: 0.75;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 250ms ease-in;
+    }
+
+    &:is(:hover, :focus-visible) {
+      &::after {
+        transform: scaleY(1);
+      }
+
+      .text {
+        color: $color-neutral-1000;
+        transition: color 250ms ease-in 100ms;
+      }
+    }
+
+    .text {
+      --margin-left: 1.25rem;
+      --margin-bottom: 1.25rem;
+
+      max-width: 9ch;
+      align-self: end;
+      position: relative;
+      z-index: 1;
+      margin-inline-start: var(--margin-left);
+      margin-block-end: var(--margin-bottom);
+      transition: color 150ms ease-in;
+
+      @include mq(medium) {
+        --margin-left: 2.5rem;
+        --margin-bottom: 2rem;
+      }
+    }
+  }
+</style>
