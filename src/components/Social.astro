@@ -1,0 +1,72 @@
+---
+// Library imports
+import { Icon } from "astro-icon/components"
+---
+
+<ul>
+  <li>
+    <a href="#"
+      ><Icon name="icon-facebook" size={24} /><span class="visually-hidden"
+        >Facebook</span
+      ></a
+    >
+  </li>
+  <li>
+    <a href="#">
+      <Icon name="icon-twitter" size={24} /><span class="visually-hidden"
+        >Twitter</span
+      >
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <Icon name="icon-pinterest" size={24} /><span class="visually-hidden"
+        >Pinterest</span
+      >
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <Icon name="icon-instagram" size={24} /><span class="visually-hidden"
+        >Instagram</span
+      >
+    </a>
+  </li>
+</ul>
+
+<style lang="scss">
+  @use "../sass/abstracts" as *;
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin-block-start: 3rem;
+
+    @include mq(medium) {
+      grid-area: social;
+      justify-self: end;
+      margin-block-start: 0;
+    }
+
+    li {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 0.125rem;
+        width: 100%;
+        transform: translateY(0.5rem) scaleX(0);
+
+        background-color: $color-neutral-000;
+        transition: transform 0.2s ease-in;
+      }
+
+      &:hover::after {
+        transform: translateY(0.5rem) scaleX(1);
+      }
+    }
+  }
+</style>

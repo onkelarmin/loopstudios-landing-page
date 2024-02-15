@@ -1,0 +1,62 @@
+---
+// Library imports
+import { Icon } from "astro-icon/components"
+
+// Component imports
+import FooterNavigation from "./FooterNavigation.astro"
+import Social from "./Social.astro"
+---
+
+<footer>
+  <div class="inner | container">
+    <Icon name="logo" width={144} height={24} />
+    <FooterNavigation />
+    <Social />
+    <p class="copy">&copy; 2021 Loopstudios. All rights reserved.</p>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use "../sass/abstracts" as *;
+
+  footer {
+    background-color: $color-neutral-1000;
+    margin-block-start: 6rem;
+    padding: 3.5rem 1.75rem;
+
+    @include mq(medium) {
+      margin-block-start: 11.5rem;
+      padding: 2.75rem 0 2rem 0;
+    }
+
+    .inner {
+      display: grid;
+      justify-items: center;
+
+      @include mq(medium) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "logo social"
+          "nav copy";
+        gap: 1rem;
+      }
+    }
+
+    [data-icon] {
+      @include mq(medium) {
+        grid-area: logo;
+        justify-self: start;
+      }
+    }
+
+    .copy {
+      margin-block-start: 1rem;
+
+      @include mq(medium) {
+        grid-area: copy;
+        justify-self: end;
+        margin-block-start: 0;
+      }
+    }
+  }
+</style>
