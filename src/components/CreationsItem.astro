@@ -1,8 +1,18 @@
 ---
+import type { GetImageResult } from "astro"
+
+type Props = {
+  altText: string
+  mobileImage: GetImageResult
+  desktopImage: GetImageResult
+}
+
+//  import { getImage } from "astro:assets"
+
 // type Props = {
 //   altText: string
-//   mobileImage: ???
-//   desktopImage: ???
+//   mobileImage: Awaited<ReturnType<typeof getImage>>
+//   desktopImage: Awaited<ReturnType<typeof getImage>>
 // }
 
 const { mobileImage, desktopImage, altText } = Astro.props
